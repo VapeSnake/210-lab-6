@@ -14,6 +14,9 @@ int main()
     array = new double[SIZE];
     enterArrayData(array);
     cout << "Hello world! " << endl;
+    outputArrayData(array);
+    double sum = sumArray(array);
+    
     return 0;
 }
 
@@ -29,6 +32,17 @@ void enterArrayData(double *arr)
 
 void outputArrayData(double *arr)
 {
+    cout << "Outputting array elements: ";
     for (int i = 0; i < SIZE; i++)
-    cout << *(arr + i);
+        cout << *(arr + i) << " ";
+}
+
+double sumArray(double *arr)
+{
+    double sum = 0; // Initializes sum tracker to zero to begin summing array.
+    for (int i = 0; i < SIZE; i++)
+    {
+        sum += *(arr + i);
+    }
+    return sum;
 }
