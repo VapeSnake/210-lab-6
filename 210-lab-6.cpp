@@ -13,10 +13,10 @@ int main()
     double *array = nullptr;
     array = new double[SIZE];
     enterArrayData(array);
-    cout << "Hello world! " << endl;
     outputArrayData(array);
     double sum = sumArray(array);
-    
+    cout << "Sum of values: " << sum << endl;
+
     return 0;
 }
 
