@@ -16,7 +16,7 @@ int main()
     outputArrayData(array, SIZE);
     double sum = sumArray(array, SIZE);
     cout << "\nSum of values: " << sum << endl;
-
+    delete [] array; // Deleting dynamic array to be a good citizen
     return 0;
 }
 
@@ -27,13 +27,17 @@ void enterArrayData(double *arr, int SIZE)
         cout << "Element #" << i << ": "; // Loop for inputting elements
         while (true)
         {
-            cin >> *(arr + i); // Checks for invalid entries (negative, characters)
             if (!(cin >> *(arr + i)) || *(arr + i) < 0)
-            {
+            { // Cin above if statement was redundant, so it was removed.
                 cout << "Error: Not a valid number. Enter a non-negative number.\n";
-                cin.clear();          // Clears error state to allow re-entry of number
-                cin.ignore(100, '\n') // Cleans buffer of any illegal characters
-            } // to prevent infinite loop.
+                cin.clear();           // Clears error state to allow re-entry of number
+                cin.ignore(100, '\n'); // Cleans buffer of any illegal characters
+                continue;              // to prevent infinite loop.
+            }
+            else
+            {
+                break; // If entry is valid, break from while loop and
+            } // continue to next entry.
         }
     }
     cout << "Data entry complete. " << endl;
