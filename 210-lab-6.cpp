@@ -15,7 +15,7 @@ int main()
     enterArrayData(array);
     outputArrayData(array);
     double sum = sumArray(array);
-    cout << "Sum of values: " << sum << endl;
+    cout << "\nSum of values: " << sum << endl;
 
     return 0;
 }
@@ -25,7 +25,14 @@ void enterArrayData(double *arr)
     for (int i = 0; i < SIZE; i++)        // NOTE: Include input val. for
     {                                     // + values only
         cout << "Element #" << i << ": "; // Loop for inputting elements
+        while(true)
+        {
         cin >> *(arr + i);                // using pointer notation
+            if (!(cin >> double) || *(arr + i) < 0)
+            {
+                cout <<
+            }
+        }
     }
     cout << "Data entry complete. " << endl;
 }
