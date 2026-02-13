@@ -11,12 +11,12 @@ double sumArray(double *, int SIZE);      // dynamic arrays via pointers.
 int main()
 {
     double *array = nullptr;
-    array = new double[SIZE];
+    array = new double[SIZE]; // Dynamic array of size 5 created.
     enterArrayData(array, SIZE);
     outputArrayData(array, SIZE);
     double sum = sumArray(array, SIZE);
     cout << "\nSum of values: " << sum << endl;
-    delete [] array; // Deleting dynamic array to be a good citizen
+    delete[] array; // Deleting dynamic array to be a good citizen
     return 0;
 }
 
