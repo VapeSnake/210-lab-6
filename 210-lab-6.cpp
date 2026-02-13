@@ -4,47 +4,49 @@
 using namespace std;
 const int SIZE = 5;
 
-void enterArrayData(double *);
-void outputArrayData(double *); // Pointer as parameters to pass
-double sumArray(double *);      // dynamic arrays via pointers.
+void enterArrayData(double *, int SIZE);
+void outputArrayData(double *, int SIZE); // Pointer as parameters to pass
+double sumArray(double *, int SIZE);      // dynamic arrays via pointers.
 
 int main()
 {
     double *array = nullptr;
     array = new double[SIZE];
-    enterArrayData(array);
-    outputArrayData(array);
-    double sum = sumArray(array);
+    enterArrayData(array, SIZE);
+    outputArrayData(array, SIZE);
+    double sum = sumArray(array, SIZE);
     cout << "\nSum of values: " << sum << endl;
 
     return 0;
 }
 
-void enterArrayData(double *arr)
+void enterArrayData(double *arr, int SIZE)
 {
-    for (int i = 0; i < SIZE; i++)        // NOTE: Include input val. for
-    {                                     // + values only
+    for (int i = 0; i < SIZE; i++)
+    {
         cout << "Element #" << i << ": "; // Loop for inputting elements
-        while(true)
+        while (true)
         {
-        cin >> *(arr + i);                // using pointer notation
-            if (!(cin >> double) || *(arr + i) < 0)
+            cin >> *(arr + i); // Checks for invalid entries (negative, characters)
+            if (!(cin >> *(arr + i)) || *(arr + i) < 0)
             {
-                cout <<
-            }
+                cout << "Error: Not a valid number. Enter a non-negative number.\n";
+                cin.clear();          // Clears error state to allow re-entry of number
+                cin.ignore(100, '\n') // Cleans buffer of any illegal characters
+            } // to prevent infinite loop.
         }
     }
     cout << "Data entry complete. " << endl;
 }
 
-void outputArrayData(double *arr)
+void outputArrayData(double *arr, int SIZE)
 {
     cout << "Outputting array elements: ";
     for (int i = 0; i < SIZE; i++)
         cout << *(arr + i) << " ";
 }
 
-double sumArray(double *arr)
+double sumArray(double *arr, int SIZE)
 {
     double sum = 0; // Initializes sum tracker to zero to begin summing array.
     for (int i = 0; i < SIZE; i++)
