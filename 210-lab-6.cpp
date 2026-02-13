@@ -4,9 +4,9 @@
 using namespace std;
 const int SIZE = 5;
 
-void enterArrayData(double*);
-void outputArrayData(double*); // Pointer as parameters to pass
-double sumArray(double*);      // dynamic arrays via pointers.
+void enterArrayData(double *);
+void outputArrayData(double *); // Pointer as parameters to pass
+double sumArray(double *);      // dynamic arrays via pointers.
 
 int main()
 {
@@ -19,10 +19,16 @@ int main()
 
 void enterArrayData(double *arr)
 {
-    for (int i = 0; i < SIZE; i++)
-    {   
-        cout << "Element #" << i << ": ";
-        cin >> *(arr + i);
+    for (int i = 0; i < SIZE; i++)        // NOTE: Include input val. for
+    {                                     // + values only
+        cout << "Element #" << i << ": "; // Loop for inputting elements
+        cin >> *(arr + i);                // using pointer notation
     }
+    cout << "Data entry complete. " << endl;
+}
 
+void outputArrayData(double *arr)
+{
+    for (int i = 0; i < SIZE; i++)
+    cout << *(arr + i);
 }
